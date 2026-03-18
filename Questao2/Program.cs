@@ -21,10 +21,6 @@ public class Program
         totalGoals = getTotalScoredGoals(teamName, year);
 
         Console.WriteLine("Team " + teamName + " scored " + totalGoals.ToString() + " goals in " + year);
-
-        // Output expected:
-        // Team Paris Saint - Germain scored 109 goals in 2013
-        // Team Chelsea scored 92 goals in 2014
     }
 
     public static int getTotalScoredGoals(string team, int year)

@@ -1,72 +1,57 @@
 # technical-challenge-dotnet
 
-Resolução de desafio técnico em .NET, organizada por questão.
+Repositório com minha resolução do desafio técnico em .NET.
 
-## Estrutura do repositório
+## Organização
 
-- `Questao1`: aplicação de console com modelagem de conta bancária e regras de depósito/saque.
-- `Questao2`: aplicação de console que consome API de partidas de futebol e calcula total de gols por time/ano.
-- `Questao3`: resolução em documento (`.docx`).
-- `Questao4`: resolução em documento (`.docx`).
-- `Questao5`: API REST em ASP.NET Core com SQLite/Dapper para movimentação e consulta de saldo.
+- `Questao1`: console app com classe de conta bancária.
+- `Questao2`: console app que consulta API e soma gols por time/ano.
+- `Questao3`: resposta em documento (`.docx`).
+- `Questao4`: resposta em documento (`.docx`).
+- `Questao5`: API REST para movimentação e consulta de saldo.
 
-## Tecnologias utilizadas
+## Stack usada
 
 - .NET 6
-- ASP.NET Core Web API
+- ASP.NET Core
 - SQLite
 - Dapper
 - Newtonsoft.Json
-- Swagger (Swashbuckle)
+- Swagger
 
-## Pré-requisitos
+## Como rodar
 
-- SDK do .NET 6 ou superior instalado.
-
-## Como executar
-
-No diretório raiz do repositório:
+Na pasta raiz:
 
 ```powershell
 dotnet build .\Exercicio.sln
 ```
 
-### Questao1
+Executar cada projeto:
 
 ```powershell
 dotnet run --project .\Questao1\Questao1.csproj
-```
-
-### Questao2
-
-```powershell
 dotnet run --project .\Questao2\Questao2.csproj
-```
-
-### Questao5
-
-```powershell
 dotnet run --project .\Questao5\Questao5.csproj
 ```
 
-Com a API em execução, acessar Swagger:
+Swagger da `Questao5`:
 
 - `https://localhost:7140/swagger`
-- ou `http://localhost:5189/swagger`
+- `http://localhost:5189/swagger`
 
-## Questão 5 - Endpoints implementados
+## Questao5 - endpoints
 
 - `POST /movimentacao`
-  - Recebe: identificação da requisição, identificação da conta corrente, valor e tipo de movimento (`C`/`D`).
-  - Validações: conta existente, conta ativa, valor positivo e tipo válido.
-  - Retorna `idMovimento` em caso de sucesso.
+  - recebe `idRequisicao`, `idContaCorrente`, `valor` e `tipoMovimento` (`C` ou `D`)
+  - valida conta, status da conta, valor e tipo
+  - retorna `idMovimento` quando sucesso
 
 - `GET /saldo/{idContaCorrente}`
-  - Retorna: número da conta, nome do titular, data/hora da consulta e saldo atual.
-  - Saldo calculado por: soma dos créditos menos soma dos débitos.
+  - retorna numero da conta, nome do titular, data/hora e saldo atual
+  - saldo calculado por creditos - debitos
 
 ## Observações
 
-- As tabelas do SQLite são criadas automaticamente na inicialização da `Questao5`.
-- A carga inicial de contas correntes é feita automaticamente no bootstrap do banco.
-- As questões 3 e 4 estão apresentadas em seus respectivos documentos na pasta de cada questão.
+- O banco da `Questao5` é criado automaticamente ao iniciar a API.
+- As contas iniciais também são carregadas no bootstrap.
